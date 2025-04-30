@@ -1,4 +1,6 @@
 ### CSV FILE READER WITH PHP
+
+### 📁 Project Structure
 ```bash
 .
 |-- app
