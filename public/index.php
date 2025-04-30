@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 $root = dirname(__DIR__) . DIRECTORY_SEPARATOR;
 
@@ -13,7 +13,7 @@ require APP_PATH. "App.php";
 $files = getTransactionFiles(FILES_PATH);
 
 $transactions = [];
-foreach($files as $file){
+foreach ($files as $file) {
     $transactions = array_merge($transactions, getTransactions($file));
 }
 

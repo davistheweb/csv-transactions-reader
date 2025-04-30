@@ -1,22 +1,26 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
-function getTransactionFiles(string $dirPath): array{
+function getTransactionFiles(string $dirPath): array
+{
     $files = [];
-   
-    foreach(scandir($dirPath) as $file){
 
-         if(is_dir($file)) continue;
-         $files[] = $dirPath .$file;
+    foreach (scandir($dirPath) as $file) {
+
+        if (is_dir($file)) {
+            continue;
+        }
+        $files[] = $dirPath .$file;
         //var_dump($file);
     }
 
     return $files;
 }
 
-function getTransactions(string $fileName): array {
-    if(!file_exists($fileName)){
+function getTransactions(string $fileName): array
+{
+    if (!file_exists($fileName)) {
         trigger_error('File "'. $fileName . '"does not exists.', E_USER_ERROR);
     }
 
@@ -26,7 +30,7 @@ function getTransactions(string $fileName): array {
 
     $transactions = [];
 
-    while(($transaction = fgetcsv($file))!== false){
+    while (($transaction = fgetcsv($file)) !== false) {
         $transactions[] = $transaction;
     }
 
