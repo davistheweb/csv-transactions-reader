@@ -11,11 +11,11 @@ function getTransactionFiles(string $dirPath): array
         if (is_dir($file)) {
             continue;
         }
-        $files[] = $dirPath .$file;
+        $files[] = $dirPath .$file; 
         //var_dump($file);
     }
 
-    return $files;
+    return $files; 
 }
 
 function getTransactions(string $fileName): array
@@ -35,4 +35,18 @@ function getTransactions(string $fileName): array
     }
 
     return $transactions;
+}
+
+function readTransactionCSV(array $transactionRow):array {
+
+    [$date, $checkNumber,  $description, $amount] = $transactionRow;
+
+    $amount = str_replace(['$', ',', '"'], '', $amount);
+
+    return [
+        'date' => $date,
+        'checkNumber' => $checkNumber,
+        'description' => $description,
+        'amount' => $amount
+    ];
 }
